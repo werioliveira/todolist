@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 const Botoes = ({ status, value, deleteItemTodo, todoId }) => {
   return (
-    <div className="flex ">
+    <div className="flex md:flex-row flex-col items-center">
       <div
         className={
           "bg-sky-400 w-24 p-1 m-1 rounded-lg text-white text-base flex flex-row items-center justify-center"

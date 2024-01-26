@@ -24,9 +24,6 @@ const Todo = ({ todo, update, deleteItemTodo }) => {
       ["há %s anos", "em %s anos"],
     ][index];
   };
-  const handleDelete = (id) => {
-    deleteItemTodo(id);
-  };
   register("pt-br", localeFunc);
   const [status, setStatus] = useState("Criado");
 
@@ -48,31 +45,30 @@ const Todo = ({ todo, update, deleteItemTodo }) => {
     <div
       className={
         todo.status === "Concluido"
-          ? "bg-green-600 flex py-1 px-8 w-full justify-between rounded-lg items-center"
+          ? "bg-green-600 block md:flex py-1 px-8 w-full justify-between rounded-lg items-center"
           : "" || todo.status === "Iniciado"
-          ? "bg-sky-600 flex  py-1 px-8 w-full justify-between rounded-lg items-center"
-          : "bg-slate-600 flex  py-1 px-8 w-full justify-between rounded-lg items-center"
+          ? "bg-sky-600 block md:flex  py-1 px-8 w-full justify-between rounded-lg items-center"
+          : "bg-slate-600 block md:flex  py-1 px-8 w-full justify-between rounded-lg items-center"
       }
     >
-      <div>
+      <div className="text-center">
         <p>#{todo._id.substring(0, 5)}</p>
       </div>
-      <div>
+      <div className="text-center">
         <p>{todo.text}</p>
       </div>
-      <div className=" flex flex-col">
+      <div className=" flex flex-col text-center">
         <p>{format(todo.value, "pt-br")}</p>
       </div>
-      <div>
-        <span>
-          <Botoes
-            status={handleStatus}
-            value={todo.status}
-            deleteItemTodo={deleteItemTodo}
-            todoId={todo._id}
-          />
-        </span>
-      </div>
+
+      <span>
+        <Botoes
+          status={handleStatus}
+          value={todo.status}
+          deleteItemTodo={deleteItemTodo}
+          todoId={todo._id}
+        />
+      </span>
     </div>
   );
 };

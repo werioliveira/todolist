@@ -7,13 +7,11 @@ import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [todo, setTodo] = useState([]);
-  const handleSave = () => {
-    addItemTodo({ text, value });
-  };
 
   useEffect(() => {
     setTodoState();
   }, []);
+
   const setTodoState = () => {
     setTodo(
       localStorage.getItem("TODO")
@@ -94,10 +92,9 @@ function App() {
       <div className="flex justify-center w-full h-96 my-2">
         <div className="flex w-3/4 text-white flex-col overflow-y-scroll my-2 gap-2">
           {todo.todoItems?.map((todo, index) => (
-            <div>
+            <div key={index}>
               <Todo
                 todo={todo}
-                key={index}
                 update={updateItemTodo}
                 deleteItemTodo={deleteItemTodo}
               />

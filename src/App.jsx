@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { PlayCircle, RotateCcw, CheckCircle, Trash2, Calendar } from "lucide-react"
-import DatePicker from "react-date-picker";
+import DateTimePicker from "react-datetime-picker"
+import 'react-datetime-picker/dist/DateTimePicker.css';
 import { v4 as uuidv4 } from "uuid";
 import TimeAgo from "./components/TimeAgo";
 
@@ -102,15 +103,21 @@ export default function Component() {
             <label className="text-white whitespace-nowrap" htmlFor="tododate">
               <Calendar className="w-5 h-5" />
             </label>
-            <DatePicker
-              id="tododate"
-              onChange={onChange}
-              value={value}
-              format="dd/MM/yyyy"
-              clearIcon={null}
-              calendarIcon={null}
-              className="bg-transparent"
-            />
+            <DateTimePicker
+  id="tododate"
+  onChange={onChange}
+  value={value}
+  format="dd/MM/yyyy HH:mm"
+  clearIcon={null}
+  calendarIcon={null}
+  calendarClassName="futuristic-calendar"
+  dayPlaceholder="dd"
+  monthPlaceholder="mm"
+  yearPlaceholder="yyyy"
+  disableClock={true} /* Desativa o relógio (dropdown) para hora/minuto */
+  hourPlaceholder={null} /* Remove o placeholder da hora */
+  minutePlaceholder={null} /* Remove o placeholder do minuto */
+/>
           </div>
           <button
             onClick={() => addItemTodo({ text, value })}
